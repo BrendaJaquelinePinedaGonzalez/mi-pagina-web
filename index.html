@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lovely Notes 🦢</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="header-superior">
+        <div class="etiqueta">Estructura de datos · Agenda Personal</div>
+        <button class="btn-modo" onclick="alternarModo()" title="Cambiar modo oscuro/claro">🌙 Modo Oscuro</button>
+    </div>
+    <h1> Lovely Notes 🦢 </h1>
+    <p>Organiza los pendientes .</p>
+</header>
+
+<div class="contenedor">
+
+    <section class="estadisticas">
+        <div class="estadistica">
+            <span>Materias registradas</span>
+            <h2 id="totalMaterias">0</h2>
+        </div>
+        <div class="estadistica">
+            <span>Tareas pendientes</span>
+            <h2 id="totalPendientes">0</h2>
+        </div>
+        <div class="estadistica">
+            <span>Tareas completadas</span>
+            <h2 id="totalCompletadas">0</h2>
+        </div>
+    </section>
+
+    <main class="principal">
+
+        <aside class="menu">
+            <h3>Menú principal</h3>
+            <button onclick="inicio()">🏠 Inicio.</button>
+            <button onclick="mostrarFormulario('materia')">＋ Agregar materia</button>
+            <button onclick="mostrarFormulario('unidad')">＋ Agregar unidad</button>
+            <button onclick="mostrarFormulario('tarea')">＋ Agregar tarea</button>
+            <button onclick="mostrarTodo()">▤ Ver todas las tareas</button>
+            <button onclick="siguienteTarea()">➜ Siguiente tarea (Cola)</button>
+            <button onclick="completarSiguiente()">✓ Completar siguiente</button>
+            <button onclick="deshacer()">↶ Deshacer última acción (Pila)</button>
+            <button onclick="mostrarEstructuras()">📊 Visualizador de Estructuras</button>
+            <button onclick="mostrarHistorial()">◷ Historial</button>
+            <button onclick="mostrarCalendario()">▦ Calendario</button>
+            <button onclick="mostrarCodigoC()">&lt;/&gt; Código fuente en C</button>
+            <!-- NUEVO BOTÓN PARA EL BUZÓN NETLIFY -->
+            <button onclick="mostrarFormularioNetlify()">📬 Buzón de Comentarios</button>
+        </aside>
+
+        <section class="contenido">
+
+            <h2 id="tituloVista">Bienvenido a tu agenda </h2>
+            <p class="descripcion" id="descripcionVista">
+                Selecciona una opción del menú para comenzar a organizar tus pendientes.
+            </p>
+
+            <div id="contenedorBuscador" style="display:none; margin-bottom: 15px;">
+                <input type="text" id="inputBuscar" placeholder="🔍 Buscar tarea por nombre o materia..." oninput="filtrarTareas(this.value)">
+            </div>
+
+            <div id="formMateria" class="formulario">
+                <h3>Agregar materia</h3>
+                <input id="nombreMateria" placeholder="Nombre de la materia (ej. Estructuras de Datos)">
+                <input id="profesor" placeholder="Nombre del profesor">
+                <button class="btn" onclick="agregarMateria()">Guardar materia</button>
+            </div>
+
+            <div id="formUnidad" class="formulario">
+                <h3>Agregar unidad</h3>
+                <select id="materiaUnidad"></select>
+                <input id="nombreUnidad" placeholder="Nombre o número de unidad (ej. Unidad 1)">
+                <button class="btn" onclick="agregarUnidad()">Guardar unidad</button>
+            </div>
+
+            <div id="formTarea" class="formulario">
+                <h3>Agregar tarea</h3>
+                <select id="materiaTarea" onchange="actualizarUnidades()"></select>
+                <select id="unidadTarea"></select>
+                <input id="nombreTarea" placeholder="Nombre de la tarea o práctica">
+                <textarea id="detalleTarea" placeholder="Descripción de la actividad"></textarea>
+                <label>Fecha de entrega:</label>
+                <input type="date" id="fechaTarea">
+                <button class="btn" onclick="agregarTarea()">Guardar tarea</button>
+            </div>
+
+            <div id="vista"></div>
+
+        </section>
+    </main>
+</div>
+
+
+<form name="contacto-net" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="nombre" />
+    <input type="email" name="email" />
+    <textarea name="mensaje"></textarea>
+</form>
+
+<footer>
+    Matemáticas Aplicadas y Computación · FES Acatlán 
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
